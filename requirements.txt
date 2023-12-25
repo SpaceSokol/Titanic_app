@@ -3,3 +3,4 @@ streamlit~=1.29.0
 pandas~=2.1.4
 fastapi~=0.105.0
 pydantic~=2.5.3
+requests~=2.31.0
