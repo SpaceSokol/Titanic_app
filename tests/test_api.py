@@ -2,6 +2,10 @@ import requests
 from api import Passenger, app
 from fastapi.testclient import TestClient
 
+from os import path
+import sys
+sys.path.append(path.abspath('../Titanic_app'))
+
 client = TestClient(app)
 
 
