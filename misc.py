@@ -6,4 +6,11 @@ encode_dict = [
 
 
 def encode(gender, with_family, pclass, embarked):
+    """
+    :param gender: Пол пассажира
+    :param with_family: Есть ли семья у пассажира
+    :param pclass: Класс пассажира
+    :param embarked: Порт отправления
+    :return: Возвращает закодированные поля приемлимые для модели
+    """
     return encode_dict[0][gender], encode_dict[1][with_family], encode_dict[2][pclass], encode_dict[3][embarked]

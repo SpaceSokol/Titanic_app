@@ -17,6 +17,9 @@ gender, with_family, pclass, embarked = encode(gender, with_family, pclass, emba
 
 
 def predict():
+    """
+    :return: Возвращает результат работы модели
+    """
     X = pd.DataFrame(columns=['Pclass', 'Sex', 'Age', 'Fare', 'Embarked', 'WithFamily'],
                      data=[[pclass, gender, age, fare, embarked, with_family]])
     pred = model.predict(X)[0]

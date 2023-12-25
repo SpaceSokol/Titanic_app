@@ -4,7 +4,10 @@ from pydantic import BaseModel
 from catboost import CatBoostClassifier
 
 model = CatBoostClassifier()
-model.load_model('./weights/model')
+try:
+    model.load_model('./weights/model')
+except Exception:
+    model.load_model('../weights/model')
 
 app = FastAPI()
 
@@ -18,8 +21,12 @@ class Passenger(BaseModel):
     with_family: int
 
 
-@app.post("/predict/")
+@app.post("/predict")
 def predict(passenger: Passenger):
+    """
+    :param passenger: Параметры пассажира для классификации
+    :return: Возвращает статус пассажира, выжил или нет
+    """
     X = pd.DataFrame(columns=['Pclass', 'Sex', 'Age', 'Fare', 'Embarked', 'WithFamily'],
                      data=[[passenger.pclass,
                             passenger.gender,
@@ -27,4 +34,5 @@ def predict(passenger: Passenger):
                             passenger.fare,
                             passenger.embarked,
                             passenger.with_family]])
-    return model.predict(X)[0]
+    print(X)
+    return {'predict': str(model.predict(X)[0])}
