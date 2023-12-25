@@ -1,5 +1,14 @@
 import requests
-from ..api import Passenger
+from pydantic import BaseModel
+
+
+class Passenger(BaseModel):
+    pclass: int
+    gender: int
+    age: int
+    fare: float
+    embarked: int
+    with_family: int
 
 
 def test_init():
